@@ -68,24 +68,16 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: `Barry's Site`,
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
+          // { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Tutorial' },
+          { type: 'docSidebar', sidebarId: 'frontendNotes', position: 'left', label: '前端笔记' },
+          { to: '/blog', label: 'Blog', position: 'left' },
+          { href: 'https://github.com/facebook/docusaurus', label: 'GitHub', position: 'right' },
         ],
       },
       footer: {
