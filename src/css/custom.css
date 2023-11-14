@@ -28,3 +28,6 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* 代码块中的注释不要使用斜体 */
+.theme-code-block .comment { font-style: normal !important; }
