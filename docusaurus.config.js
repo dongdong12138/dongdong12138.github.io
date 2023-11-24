@@ -76,6 +76,7 @@ const config = {
         items: [
           // { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Tutorial' },
           { type: 'docSidebar', sidebarId: 'frontendNotes', position: 'left', label: '前端笔记' },
+          { type: 'docSidebar', sidebarId: 'projectNotes', position: 'left', label: '项目集锦' },
           // { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/blog', label: '前端 Blog', position: 'left' },
           { href: 'https://github.com/facebook/docusaurus', label: 'GitHub', position: 'right' },
