@@ -52,13 +52,13 @@ const changeMsg = () => {
 
 在控制台查看输出的 ref 对象很不方便，可以点击控制台右上角的“设置”，勾选“启用自定义格式设置工具”。
 
-![img_5.png](img_5.png)
+![img_5.png](images/img_5.png)
 
-![img_6.png](img_6.png)
+![img_6.png](images/img_6.png)
 
 刷新浏览器，现在控制台输出的值就很明了。
 
-![img_7.png](img_7.png)
+![img_7.png](images/img_7.png)
 
 ## shallowRef
 
