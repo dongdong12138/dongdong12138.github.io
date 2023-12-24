@@ -9,7 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: `Barry's Site`,
-  tagline: '给后来的人留点儿东西叭！',
+  tagline: '纸上得来终觉浅，绝知此事要躬行',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -76,7 +76,7 @@ const config = {
         items: [
           // { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Tutorial' },
           { type: 'docSidebar', sidebarId: 'frontendNotes', position: 'left', label: '前端笔记' },
-          { type: 'docSidebar', sidebarId: 'projectNotes', position: 'left', label: '项目集锦' },
+          { type: 'docSidebar', sidebarId: 'projects', position: 'left', label: '项目集锦' },
           // { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/blog', label: '前端 Blog', position: 'left' },
           { href: 'https://github.com/facebook/docusaurus', label: 'GitHub', position: 'right' },

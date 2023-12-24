@@ -20,7 +20,7 @@ Pinia API 与 Vuex 也有很多不同，即：
 
 ```js title="main.js"
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createPinia } from 'docs/frontend-notes/vue3/pinia'
 import App from './App.vue'
 
 const pinia = createPinia()

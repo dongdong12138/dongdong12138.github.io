@@ -143,7 +143,7 @@ if (defaults) {
 }
 ```
 
-![img.png](img.png)
+![img.png](images/img.png)
 
 ## ref 复杂写法
 
