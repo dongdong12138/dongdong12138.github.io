@@ -4,17 +4,13 @@ sidebar_position: 7
 
 # Pinia
 
-Pinia API 与 Vuex 的不同：
+Pinia 与 Vuex 的不同：
+- Vuex 中的 `mutation` 被弃用，它们经常被认为是极其冗余的，它们初衷是带来 devtools 的集成方案
+- Pinia 对 TypeScript 的支持更友好
+- Pinia 可以像 Vuex 那样使用选项式 API，但 Pinia 也可以使用组合式 API
+- Pinia 不再有可命名的模块（Vuex 中的“命名空间”）
 
-- `mutation` 已被弃用，它们经常被认为是极其冗余的，它们初衷是带来 devtools 的集成方案
-- 无需创建自定义的复杂包装器来支持 TypeScript，一切都可标注类型
-- 无过多的魔法字符串注入，只需要导入函数并调用它们
-- 无需要动态添加 Store，它们默认都是动态的，甚至你可能都不会注意到这点。注意，你仍然可以在任何时候手动使用一个 Store 来注册它，但因为它是自动的，所以你不需要担心它。
-- 不再有嵌套结构的模块。你仍然可以通过导入和使用另一个 Store 来隐含地嵌套 stores 空间。虽然 Pinia 从设计上提供的是一个扁平的结构，但仍然能够在 Store 之间进行交叉组合。你甚至可以让 Stores
-  有循环依赖关系。
-- 不再有可命名的模块。考虑到 Store 的扁平架构，Store 的命名取决于它们的定义方式，你甚至可以说所有 Store 都应该命名。
-
-## 搭建 Pinia 环境
+## 搭建 [Pinia](https://pinia.vuejs.org/zh/) 环境
 
 ```shell title="安装"
 npm install pinia
