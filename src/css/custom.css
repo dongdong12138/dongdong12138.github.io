@@ -37,3 +37,13 @@ code { color: #d63200; }
 
 /* 给图片添加阴影 */
 img { box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15); }
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ddd;
+}
