@@ -11,7 +11,7 @@ npm install vuex@next --save
 ```
 
 ```js title="src/store/index.js"
-import { createStore } from 'docs/frontend-notes/vue3/vuex'
+import { createStore } from 'docs/frontend-notes/Vue3/vuex'
 
 const store = createStore({
   state() {

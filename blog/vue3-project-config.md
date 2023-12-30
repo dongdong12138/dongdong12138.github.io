@@ -1,6 +1,6 @@
 ---
 date: 2023-11-25
-slug: vue3-project-config
+slug: Vue3-project-config
 title: Vue3 项目工程化配置
 authors: [barry]
 tags: [Vue3, 工程化]
@@ -126,7 +126,7 @@ module.exports = {
   // 字符串数组：每个配置继承它前面的配置
   // 前缀 eslint-config- 可省略
   extends: [
-    'plugin:vue/vue3-strongly-recommended',   // 由 eslint-plugin-vue 提供
+    'plugin:vue/Vue3-strongly-recommended',   // 由 eslint-plugin-vue 提供
     'airbnb-base',  // 由 eslint-config-airbnb-base 提供
     'prettier'      // 由 eslint-config-prettier 提供
   ],
