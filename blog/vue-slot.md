@@ -1,7 +1,7 @@
 ---
 date: 2023-10-28
 slug: vue-slot
-title: Vue slot 详解
+title: Vue 插槽详解
 authors: [barry]
 tags: [Vue, slot]
 ---
