@@ -10,3 +10,10 @@ git remote add origin 远程仓库地址
 # 与远程仓库取消关联
 git remote rm origin
 ```
+
+## git push
+
+```shell
+# 提交指定 commit 到指定分支
+git push origin fcb8463:master
+```
