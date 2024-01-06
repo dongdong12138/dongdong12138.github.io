@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdongdong_12138_github_io=self.webpackChunkdongdong_12138_github_io||[]).push([[9266],{6951:s=>{s.exports=JSON.parse('{"label":"mixin","permalink":"/blog/tags/mixin","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
