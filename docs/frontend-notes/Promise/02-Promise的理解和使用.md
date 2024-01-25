@@ -500,3 +500,7 @@ console.log(result)
 ```
 
 ![img_10.png](img_10.png)
+
+## Promise/A+ 规范
+
+Promise/A+ 规范中文版：https://promisesaplus.com.cn/
