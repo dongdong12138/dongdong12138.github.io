@@ -221,7 +221,7 @@ Promise(executor) {}：
   - `resolve` 函数：成功时调用的函数，通常写成 `resove(value)`；
   - `reject` 函数：失败时调用的函数，通常写成 `reject(reason)`。
 - `executor` 是执行器，会在 Promise 内部立即同步执行；异步操作 `resolve`/`reject` 就在 `executor` 中执行。
-- Promise 构造函数的方法有：`resolve`、`reject`、`all`、`race`、`allSettled` 等。
+- Promise 构造函数的方法有：`resolve`、`reject`、`all`、`race`、`allSettled`、`any` 等。
 - promise 原型对象（`Promise.prototype`）上的方法有 `then`、`catch`、`finally` 等。
 
 ### Promise.prototype.then 方法
@@ -288,6 +288,19 @@ new Promise((resolve, reject) => {
 }).catch(err => {
   console.log('err:', err)        // err: ReferenceError: value1 is not defined
 })
+```
+
+### Promise.prototype.finally 方法
+
+`finally()` 方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。
+
+`finally` 方法的回调不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是成功还是失败的。这表明，`finally` 方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。
+
+```js
+promise
+.then(result => {···})
+.catch(error => {···})
+.finally(() => {···})
 ```
 
 ### Promise.resolve 方法
@@ -500,6 +513,23 @@ console.log(result)
 ```
 
 ![img_10.png](img_10.png)
+
+### Promise.try 方法
+
+如果不知道或者不想区分某个操作（函数）是同步的还是异步的，就可以把这个操作放到 `Promise.try` 方法中。然后就可以使用 `then` 方法指定下一步流程，用 `catch` 捕获错误。
+
+`Promise.try()` 可以让同步函数同步执行，异步函数异步执行。
+
+```js
+const f = () => console.log('now')
+Promise.try(f)
+console.log('next')
+
+// now
+// next
+```
+
+但 `Promise.try()` 现在只是一个提案，只是在其他的 Promise 库中有实现，浏览器中还无法使用。
 
 ## Promise/A+ 规范
 

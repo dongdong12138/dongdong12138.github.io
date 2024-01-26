@@ -330,8 +330,6 @@ new Promise((resolve, reject) => {
 
 所以失败的结果是一层一层处理下来的，最后传递到 `catch` 中。
 
-或者，将 `reason => { throw reason }` 替换为 `reason => Promise.reject(reason)` 也是一样的。
-
 ## 中断 promise 链
 
 当使用 promise 的 `then` 链式调用时，如何在中间中断，不再调用后面的回调函数？
