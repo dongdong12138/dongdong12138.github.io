@@ -68,6 +68,7 @@ function fn1() {
 }
 
 async function fn2() {
+  // 如果没有对错误进行捕获，就会报错
   try {
     const result = await fn1()
     console.log('result:', result)
