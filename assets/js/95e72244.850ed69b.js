@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdongdong_12138_github_io=self.webpackChunkdongdong_12138_github_io||[]).push([[3400],{7629:s=>{s.exports=JSON.parse('{"label":"slot","permalink":"/blog/tags/slot","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
