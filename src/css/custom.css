@@ -40,10 +40,11 @@ img { box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15); }
 
 /* 滚动条 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
   background-color: #fff;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #ddd;
+  border-radius: 4px;
+  background-color: #C0C0C0;
 }
+.thin-scrollbar { scrollbar-width: auto; }
