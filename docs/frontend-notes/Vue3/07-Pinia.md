@@ -4,6 +4,8 @@ sidebar_position: 7
 
 # Pinia
 
+集中式状态管理库。
+
 Pinia 与 Vuex 的不同：
 - Vuex 中的 `mutation` 被弃用，它们经常被认为是极其冗余的，它们初衷是带来 devtools 的集成方案
 - Pinia 对 TypeScript 的支持更友好
@@ -27,11 +29,9 @@ const app = createApp(App)
 const pinia = createPinia()
 
 // 使用 pinia
-app.use(pinia)
+app.use(pinia)      // 此时开发者工具中已经有了 pinia 选项
 app.mount('#app')
 ```
-
-此时开发者工具中已经有了 `pinia` 选项。
 
 ## 存储 + 读取数据
 
@@ -66,7 +66,14 @@ export const useCountStore = defineStore('count', {
 <script setup lang="ts" name="Count">
   import { useCountStore } from '@/store/count'
   
+  // countStore 是一个 Proxy 响应式对象
   const countStore = useCountStore()
+  
+  // 以下两种方式都可以拿到 state 中的数据
+  // 下面第一个 log 中的 sum 是一个 ref 对象
+  // 由于它是在 countStore 中的，countStore 是一个 Proxy 对象，所以会自动解包，不用 .value
+  console.log(countStore.sum)
+  console.log(countStore.$state.sum)
 </script>
 ```
 
@@ -118,7 +125,13 @@ const countStore = useCountStore()
 countStore.sum = 666
 ```
 
+:::tip
+Vuex 中是不可以直接修改数据的，必须操作 Mutation 或 Action 中的方法才能修改 State 中的数据。
+:::
+
 ### 批量修改
+
+如果要一次修改多条数据，推荐使用 `$patch` 方法，进行批量修改。
 
 ```ts
 import { useCountStore } from '@/store/count'
@@ -133,7 +146,7 @@ countStore.$patch({
 
 ### 借助 actions 修改
 
-`action` 中可以编写一些业务逻辑。
+`actions` 中可以编写一些业务逻辑。
 
 ```js
 import { defineStore } from 'pinia'
@@ -177,19 +190,12 @@ countStore.$reset()
 
 `store` 是一个 `reactive` 响应式对象，直接从 `store` 中解构出的数据，会失去响应式。所以 Pinia 也提供了 `storeToRefs` 方法，用于将 `store` 中的数据转为 `ref` 对象，保持响应式，也方便在模板中使用。
 
-:::warning
-
-- Pinia 提供的 `storeToRefs` 只会将 store 中的数据转换成 ref 对象
-- Vue 提供的 `toRefs` 会将 store 中的数据、方法以及 _ 开头的属性全都转换成 ref 对象
-
-:::
-
 ```html
 <template>
    <h2>当前求和为：{{ sum }}</h2>
 </template>
 
-<script setup lang="ts" name="Count">
+<script setup lang="ts">
    import { storeToRefs } from 'pinia'
    import { useCountStore } from '@/store/count'
    
@@ -198,6 +204,11 @@ countStore.$reset()
    const { sum } = storeToRefs(countStore)
 </script>
 ```
+
+:::tip
+- Vue 提供的 `toRefs` 会将 store 中的数据、方法以及 `_`、`$` 开头的属性全都转换成 ref 对象；
+- 而 Pinia 提供的 `storeToRefs` 只会将 store 中的数据转换成 ref 对象，减少了不必要属性的响应性开销。
+:::
 
 ## getters
 
