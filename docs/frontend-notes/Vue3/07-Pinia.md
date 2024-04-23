@@ -228,7 +228,7 @@ export const useCountStore = defineStore('count', {
      // 接收 state 作为参数
      bigSum: (state): number => state.sum * 10,
      // 如果要用 this，就不能写成箭头函数
-     upperSchool(): string {
+     upperSchool() {
        // this 指向的是当前 store 实例，也可以通过 this 访问 state 中的数据
        return this.school.toUpperCase();
      },
