@@ -1,16 +1,16 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
-# Vue3 核心语法（二）
+# computed 与 watch
 
 ## computed
 
 ```js title="函数形式"
 import { ref, computed } from 'vue'
 
-const firstName = ref('')
-const lastName = ref('')
+const firstName = ref('张')
+const lastName = ref('三')
 
 const fullName = computed(() => {
   return firstName.value + '-' + lastName.value
@@ -18,10 +18,10 @@ const fullName = computed(() => {
 ```
 
 ```js title="对象形式"
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
-const firstName = ref('')
-const lastName = ref('')
+const firstName = ref('张')
+const lastName = ref('三')
 
 const fullName = computed({
   get() {
@@ -37,9 +37,9 @@ const fullName = computed({
 
 函数式写法无法修改计算属性的值，因为只有 getter 没有 setter。如果要对计算属性进行修改，可以使用对象写法。
 
-`computed` 函数的返回值是一个**计算属性 ref（ComputedRefImpl）**，所以 JS 中获取计算属性的值需要 `.value`，模板中则可以直接使用。
+`computed` 函数的返回值是一个**计算属性 ref（ComputedRefImpl）**，所以 JS 中获取计算属性的值需要 `.value`，模板中可以直接使用。
 
-![img.png](images/img_11.png)
+![computed_ref.png](images/computed_ref.png)
 
 ## watch
 
@@ -51,8 +51,6 @@ Vue3 中的 `watch` 只能监视以下数据：
 - `ref`、`reactive` 定义的数据；
 - 一个函数，返回一个值（getter 函数）；
 - 一个包含上述内容的数组。
-
-在 Vue3 中使用 `watch` 的时候，通常会遇到以下几种情况：
 
 ### 监视 `ref` 定义的基本类型数据
 
@@ -70,7 +68,7 @@ const stopWatch = watch(sum, (newValue, oldValue) => {
 })
 ```
 
-:::caution
+:::warning
 监视 `ref` 定义的基本类型的数据，不用 `.value`，因为 `.value` 已经获取到具体的值了，`watch` 只能监视属性或变量的变化，而不能监视具体的值。
 :::
 
@@ -82,7 +80,7 @@ const stopWatch = watch(sum, (newValue, oldValue) => {
 - 若修改的是 `ref` 定义的对象中的某个属性，`newValue` 和 `oldValue` 都是新值，因为它们是同一个对象（对象引用地址未发生改变）；
 - 若修改整个 `ref` 定义的对象，`newValue` 是新值，`oldValue` 是旧值，因为不是同一个对象了（对象引用地址发生了变化）。
 
-:::caution
+:::warning
 监视 `ref` 定义的复杂类型的数据：
 - 如果监视的是整个对象是否发生变化（对象的引用地址是否发生变化），那就不用 `.value`；
 - 如果监视的是对象中的某个属性：
@@ -93,7 +91,7 @@ const stopWatch = watch(sum, (newValue, oldValue) => {
 ```ts
 import { ref, watch } from 'vue'
 
-let person = ref({ name: '张三', age: 18 })
+const person = ref({ name: '张三', age: 18 })
 
 // 监视 person 对象的引用地址，即监视整个对象是否发生变化
 watch(person, (newValue, oldValue) => {
@@ -146,8 +144,8 @@ watch(obj, (newValue, oldValue) => {
 
 监视 `ref` 或 `reactive` 定义的【对象类型】数据中的**某个属性**，注意点如下：
 
-1. 若该属性值**不是**【对象类型】，需要写成函数形式
-2. 若该属性值**是**【对象类型】，可以直接写，也可以写成函数形式，建议写成函数形式
+1. 若该属性值**不是**【对象类型】，需要写成函数形式；
+2. 若该属性值**是**【对象类型】，可以直接写，也可以写成函数形式，建议写成函数形式。
 
 结论：监视的如果是对象里的某个属性，那么最好写函数形式。
 
@@ -205,8 +203,8 @@ watch([() => person.name, person.car], (newValue, oldValue) => {
 ### 基本使用
 
 执行时机：
-- `watchEffect` 一上来就默认调用一次，相当于 `watch` 设置了 `immediate: true`
-- 当依赖的数据发生变化，重新调用
+- `watchEffect` 一上来就默认调用一次，相当于 `watch` 设置了 `immediate: true`；
+- 当依赖的数据发生变化，重新调用。
 
 `watch` 与 `watchEffect` 都能监听响应式数据的变化，不同的是监听数据变化的方式不同。`watch` 要明确指出监视的数据，而 `watchEffect` 不用明确指出监视的数据（函数中用到哪些属性，就监视哪些属性）。
 
@@ -246,35 +244,35 @@ const stopWtach = watchEffect(() => {   // 回调函数不接收 newValue、oldV
 ### 清除副作用
 
 ```ts
-import { watchEffect, ref } from 'vue';
+import { watchEffect, ref } from 'vue'
 
-let message = ref<string>('');
-let message2 = ref<string>('');
+let message = ref<string>('')
+let message2 = ref<string>('')
 
 watchEffect(oninvalidate => {
-  console.log('message', message.value);
+  console.log('message', message.value)
   // 触发监听之前会先调用这个函数
   oninvalidate(() => {
 
-  });
-  console.log('message2', message2.value);
-});
+  })
+  console.log('message2', message2.value)
+})
 ```
 
 ### 停止监听
 
 ```ts
-import { watchEffect, ref } from 'vue';
+import { watchEffect, ref } from 'vue'
 
-let message = ref<string>('');
-let message2 = ref<string>('');
+let message = ref<string>('')
+let message2 = ref<string>('')
 
 const stop = watchEffect(oninvalidate => {
-  console.log('message', message.value);
+  console.log('message', message.value)
   oninvalidate(() => {
 
-  });
-  console.log('message2', message2.value);
+  })
+  console.log('message2', message2.value)
 }, {
   // flush 可以设置侦听器执行时机
   //    pre：侦听器将在组件更新之前执行（默认）
@@ -282,10 +280,10 @@ const stop = watchEffect(oninvalidate => {
   //    sync：同步触发
   flush: 'post',
   onTrigger() {   // 可以帮助我们调试 watchEffect
-    debugger;
+    debugger
   }
-});
+})
 
 // 调用 watchEffect 返回的函数，会停止监听
-stop();
+stop()
 ```
