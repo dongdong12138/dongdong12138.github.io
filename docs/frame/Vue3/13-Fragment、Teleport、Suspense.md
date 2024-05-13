@@ -1,8 +1,10 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 ---
 
-# Vue3 新组件
+# Fragment、Teleport、Suspense
+
+Vue3 新增了 `Fragment`、`Teleport`、`Suspense` 等组件。
 
 ## Fragment
 
@@ -57,8 +59,6 @@ Teleport（传送门）能够将 **组件HTML结构** 渲染到指定 DOM 节点
 </teleport>
 ```
 
-## Suspense
-
 ## 异步组件 & Suspense
 
 ### 异步组件
@@ -71,7 +71,7 @@ Teleport（传送门）能够将 **组件HTML结构** 渲染到指定 DOM 节点
 
 ```html
 <script setup>
-const post = await fetch(`/api/post/1`).then(r => r.json())
+const post = await fetch(`/api/post/1`).then(res => res.json())
 </script>
 ```
 
@@ -102,8 +102,8 @@ const AsyncComp = defineAsyncComponent({
 异步组件必须在 `<Suspense>` 中使用，`<Suspense>` 组件有两个插槽。
 
 使用步骤：
-1. 异步引入组件
-2. 使用 `Suspense` 包裹组件，并配置好 `default` 与 `fallback`
+1. 异步引入组件；
+2. 使用 `Suspense` 包裹组件，并配置好 `default` 与 `fallback`。
 
 ```html
 <template>
@@ -118,8 +118,8 @@ const AsyncComp = defineAsyncComponent({
 </template>
 
 <script setup lang="ts">
-  import { defineAsyncComponent, Suspense } from 'vue';
-  const Child = defineAsyncComponent(() => import('./Child.vue'));  
+  import { defineAsyncComponent, Suspense } from 'vue'
+  const Child = defineAsyncComponent(() => import('./Child.vue'))  
 </script>
 ```
 

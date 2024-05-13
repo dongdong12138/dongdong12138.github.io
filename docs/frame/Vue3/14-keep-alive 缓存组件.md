@@ -1,5 +1,5 @@
 ---
-sidebar_position: 16
+sidebar_position: 14
 ---
 
 组件切换时，不显示的组件会被销毁，等要显示时再重新挂载。
