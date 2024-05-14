@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdongdong_12138_github_io=self.webpackChunkdongdong_12138_github_io||[]).push([[7393],{1838:o=>{o.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog"}')}}]);
