@@ -1,38 +1,32 @@
 ---
-sidebar_position: 19
+sidebar_position: 10
 ---
 
-## 组件 v-model
+# 深入 v-model
 
-`v-model` 用在原生元素上与用在组件上的区别：
-- 属性：`value` -> `modelValue`
-- 事件：`input` -> `update:modelValue`
+## v-model 用在原生元素上
 
-### v-model 用在原生元素上
+`v-model` 写在普通的 HTML 标签上，其本质是：`:value` 属性 ＋ `@input` 事件。
 
 ```html
-<input v-model="searchText" />
+<input type="text" v-model="userName">
+
+<!-- v-model 的本质是下面这行代码 -->
+<input type="text" :value="userName" @input="userName = (<HTMLInputElement>$event.target).value">
 ```
 
-模板编译器会对 `v-model` 进行更冗长的等价展开，以上代码相当于：
+## v-model 用在组件上
 
-```html
-<input :value="searchText" @input="searchText = $event.target.value" />
+`v-model` 写在组件标签上，其本质是：`:moldeValue` 属性 ＋ `@update:modelValue` 事件。
+
+`v-model` 用在组件上，可以实现 **父 ↔ 子** 之间相互通信。
+
+```html title="父组件"
+<CustomInput v-model="userName" />
+
+<!-- 组件标签上 v-model 的本质 -->
+<CustomInput :model-value="userName" @update:model-value="userName = $event" />
 ```
-
-### v-model 用在组件上
-
-```html
-<CustomInput v-model="searchText" />
-```
-
-以上代码相当于：
-
-```html
-<CustomInput :model-value="searchText" @update:model-value="newValue => searchText = newValue" />
-```
-
-CustomInput 组件的实现：
 
 ```html title="CustomInput.vue 写法一"
 <script setup>
@@ -67,34 +61,22 @@ const value = computed({
 </template>
 ```
 
-## v-model 的参数
+## 绑定多个 v-model
+
+Vue3 中，在组件标签上可以写多个 `v-model`。
 
 默认情况下，`v-model` 在组件上都是使用 `modelValue` 和 `update:modelValue`。
 
-我们可以通过给 `v-model` 指定一个参数来更改这些名字：
-
-```html
-<MyComponent v-model:title="bookTitle" />
-```
-
-```html title="MyComponent.vue"
-<script setup>
-defineProps(['title'])
-defineEmits(['update:title'])
-</script>
-
-<template>
-  <input type="text" :value="title" @input="$emit('update:title', $event.target.value)" />
-</template>
-```
-
-## 绑定多个 v-model
+我们可以通过给 `v-model` 指定一个参数来更改这些名字。
 
 ```html
 <UserName v-model:first-name="first" v-model:last-name="last" />
+
+<!-- 上面代码的本质如下 -->
+<UserName :first-name="first" :last-name="last" @update:first-name="first = $event" @update:last-name="last = $event" />
 ```
 
-```html
+```html title="UserName.vue"
 <script setup>
 defineProps({
   firstName: String,
