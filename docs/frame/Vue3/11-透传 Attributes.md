@@ -1,3 +1,9 @@
+---
+sidebar_position: 11
+---
+
+# 透传 Attributes
+
 ## Attributes 继承
 
 “透传”指的是传递给组件一个属性，组件内部没有使用 `defineProps` 或 `defineEmits` 定义，那么这个属性就会传递到组件的根元素上，且同名属性的属性值会合并。
@@ -60,9 +66,7 @@ defineOptions({
 模板中的 `$attrs` 对象包含了除组件所声明的 props 和 emits 之外的所有其他 attribute，例如 class、style、v-on 监听器等等。
 
 :::tip
-
 没有参数的 `v-bind` 会将一个对象的所有属性都作为 attribute 应用到目标元素上。
-
 :::
 
 ## 多根节点的 Attributes 继承

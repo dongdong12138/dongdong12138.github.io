@@ -95,7 +95,7 @@ class ObjectRefImpl<T extends object, K extends keyof T> {
 
 ## toRaw、markRaw
 
-`toRaw` 用于将响应式对象转化为普通对象。
+`toRaw` 用于将响应式对象转化为普通对象，使其不具有响应式，不触发页面的更新。
 - 何时使用：在需要将响应式对象传递给 Vue 以外的库或外部系统时，使用 `toRaw` 可以确保它们收到的是普通对象。
 
 `markRaw` 用于标记一个对象，使其**永远不会**变成响应式的。
