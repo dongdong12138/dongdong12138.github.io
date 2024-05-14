@@ -56,7 +56,7 @@ ESLint 偏向于把控项目的代码质量，而 Prettier 更偏向于统一项
 ### 1. 安装相关依赖
 
 ```shell
-pnpm install eslint eslint-plugin-vue eslint-config-prettier prettier eslint-plugin-import eslint-plugin-prettier eslint-config-airbnb-base -D
+pnpm install eslint eslint-plugin-vue eslint-config-prettier prettier eslint-plugin-import eslint-plugin-prettier eslint-config-airbnb-front-base -D
 ```
 
 依赖解释：
@@ -127,7 +127,7 @@ module.exports = {
   // 前缀 eslint-config- 可省略
   extends: [
     'plugin:vue/Vue3-strongly-recommended',   // 由 eslint-plugin-vue 提供
-    'airbnb-base',  // 由 eslint-config-airbnb-base 提供
+    'airbnb-front-base',  // 由 eslint-config-airbnb-front-base 提供
     'prettier'      // 由 eslint-config-prettier 提供
   ],
   

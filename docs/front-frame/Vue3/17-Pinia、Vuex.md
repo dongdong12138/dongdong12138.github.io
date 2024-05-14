@@ -312,7 +312,7 @@ npm install vuex@next --save
 ```
 
 ```ts title="src/store/index.ts"
-import { createStore } from 'docs/frame/Vue3/vuex'
+import { createStore } from 'docs/front-frame/Vue3/vuex'
 
 const store = createStore({
   state() {

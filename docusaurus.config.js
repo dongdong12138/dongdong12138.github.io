@@ -75,8 +75,8 @@ const config = {
         },
         items: [
           // { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Tutorial' },
-          { type: 'docSidebar', sidebarId: 'frontendNotes', position: 'left', label: '前端笔记' },
-          { type: 'docSidebar', sidebarId: 'frame', position: 'left', label: '框架' },
+          { type: 'docSidebar', sidebarId: 'front-base', position: 'left', label: '前端基础' },
+          { type: 'docSidebar', sidebarId: 'front-frame', position: 'left', label: '前端框架' },
           { type: 'docSidebar', sidebarId: 'projects', position: 'left', label: '项目集锦' },
           // { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/blog', label: '前端 Blog', position: 'left' },
