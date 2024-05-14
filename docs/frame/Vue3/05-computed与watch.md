@@ -6,18 +6,18 @@ sidebar_position: 5
 
 ## computed
 
-```js title="函数形式"
-import { ref, computed } from 'vue'
+```ts title="函数形式"
+import { ref, Ref, computed } from 'vue'
 
-const firstName = ref('张')
-const lastName = ref('三')
+const firstName: Ref<string> = ref('张')
+const lastName: Ref<string> = ref('三')
 
-const fullName = computed(() => {
+const fullName = computed<string>(() => {
   return firstName.value + '-' + lastName.value
 })
 ```
 
-```js title="对象形式"
+```ts title="对象形式"
 import { ref, computed } from 'vue'
 
 const firstName = ref('张')

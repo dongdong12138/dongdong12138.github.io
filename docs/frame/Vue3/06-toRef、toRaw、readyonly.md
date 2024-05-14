@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# toRef 与 toRaw
+# toRef、toRaw、readonly
 
 ## toRefs、toRef
 
@@ -120,4 +120,27 @@ console.log(isReactive(person))     // true
 console.log(isReactive(rawPerson))  // false
 console.log(isReactive(citys))      // false
 console.log(isReactive(citys2))     // false
+```
+
+
+## readonly 与 shallowReadonly
+
+作用：对特定数据进行保护。
+
+- `readonly` 用于创建一个对象的深只读副本；
+- `shallowReadonly` 与 `readonly` 类似，但只将对象的顶层属性设置为只读，对象内部的嵌套属性仍然是可变的；
+- `readonly` 与 `shallowReadonly` 可以对 `ref` 和 `reactive` 定义的响应式数据进行包裹。
+
+```ts
+import { reactive, readonly } from 'vue';
+
+const lisi = reactive({ name: '李四' });
+const lisiCopy = readonly(lisi);
+
+const changeLisi = () => {
+  lisi.name = '李四123';
+  // lisiCopy 本无法修改，因为它是只读的
+  // 但这个方法中也修改了 lisi，lisi 是响应式的，导致 lisiCopy 的修改也会体现在视图上
+  lisiCopy.name = '李四123';
+}
 ```

@@ -478,3 +478,29 @@ console.log(n.b)  // 2
 console.log(n.c)  // 3
 console.log(n.c.value)  // undefined
 ```
+
+## 配合 TS 使用
+
+```ts title="ref"
+import { ref, Ref } from 'vue'
+
+interface InterItem {
+  filmId: number
+  name: string
+}
+
+const name: Ref<string> = ref('张三')
+const age = ref<number>(18)
+const divEle = ref<HTMLDivElement>()
+const filmList = ref<InterItem[]>([])
+```
+
+```ts title="reactive"
+import { reactive } from 'vue'
+
+interface InterState {
+  name: string
+}
+
+const state: InterState = reactive({ name: '张三' })
+```

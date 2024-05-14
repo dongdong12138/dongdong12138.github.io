@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 # 虚拟 DOM & Diff 算法
@@ -10,7 +10,7 @@ sidebar_position: 10
 
 为什么要有虚拟 DOM？因为真实 DOM 身上的属性非常多（下图只截取了部分属性），直接操作 DOM 非常消耗性能。
 
-![img_4.png](images/img_4.png)
+![TDOM.png](images/TDOM.png)
 
 解决方案就是，我们可以利用 JS 的计算性能（操作 JS 是非常快的）来换取操作 DOM 所消耗的性能。既然逃不掉操作 DOM 这道坎，那我们就尽可能少的操作 DOM。
 
