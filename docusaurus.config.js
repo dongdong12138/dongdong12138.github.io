@@ -78,6 +78,7 @@ const config = {
           { type: 'docSidebar', sidebarId: 'front-base', position: 'left', label: '前端基础' },
           { type: 'docSidebar', sidebarId: 'front-frame', position: 'left', label: '前端框架' },
           { type: 'docSidebar', sidebarId: 'projects', position: 'left', label: '项目集锦' },
+          { type: 'docSidebar', sidebarId: 'front-standard', position: 'left', label: '前端开发规范' },
           // { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/blog', label: '前端 Blog', position: 'left' },
           { href: 'https://github.com/facebook/docusaurus', label: 'GitHub', position: 'right' },
