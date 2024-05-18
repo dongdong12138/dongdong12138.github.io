@@ -99,7 +99,9 @@ const AsyncComp = defineAsyncComponent({
 
 作用：等待异步组件时渲染一些替代内容，让应用有更好的用户体验。
 
-异步组件必须在 `<Suspense>` 中使用，`<Suspense>` 组件有两个插槽。
+异步组件必须在 `<Suspense>` 中使用，否则控制台会有警告。
+
+`<Suspense>` 组件有两个插槽：`default` 和 `fallback`。
 
 使用步骤：
 1. 异步引入组件；
@@ -132,3 +134,7 @@ const AsyncComp = defineAsyncComponent({
   const result = await axios.get('https://xxx')
 </script>
 ```
+
+:::warning
+`<Suspense>` 目前是一个实验性的特性，它的 API 将来可能会改变，项目中请谨慎使用！
+:::

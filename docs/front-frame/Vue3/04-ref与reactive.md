@@ -156,6 +156,9 @@ const handleChange = () => {
 
 `customRef` 是一个函数，接受 `track`、`trigger` 两个函数作为参数，返回一个包含 getter、setter 的对象。
 
+- getter 函数调用时机：数据被读取时；
+- setter 函数调用时机：数据被修改时。
+
 ```html title="实现防抖效果"
 <script setup lang="ts">
 import { customRef } from 'vue'

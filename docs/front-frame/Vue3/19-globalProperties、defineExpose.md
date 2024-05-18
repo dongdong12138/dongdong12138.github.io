@@ -20,6 +20,7 @@ app.config.globalProperties.$http = () => {}
 示例：Vue2 中的过滤器在 Vue3 中已经移除了，我们可以使用全局函数代替 filters。
 
 ```js
+app.config.globalProperties.msg = 'hello'
 app.config.globalProperties.$filters = {
   format(str) {
     return `$${str}`
@@ -27,12 +28,25 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-```js
-import { getCurrentInstance } from 'vue'
+```html
+<template>
+  <!-- 模板中可直接使用全局属性 -->
+  <p>{{ msg }}</p>
+</template>
 
-const app = getCurrentInstance()
-console.log(app?.proxy?.$filters.format('js'))
+<script setup lang="ts">
+  import { getCurrentInstance } from 'vue'
+
+  const app = getCurrentInstance()
+  console.log(app?.proxy?.$filters.format('js'))
+</script>
 ```
+
+:::warning
+全局属性应谨慎使用，因为：
+- 会造成数据来源不明确的问题；
+- 全局属性会污染全局命名空间，容易造成组件与全局之间的命名冲突。
+:::
 
 ## defineExpose
 
