@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
+title: Vue3 简介
 ---
 
 # Vue3 简介
